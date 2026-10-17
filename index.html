@@ -26,14 +26,13 @@
             justify-content: center;
             padding: 20px;
             position: relative;
-            /* جلوگیری از اسکرول افقی ناخواسته */
             overflow-x: hidden; 
             color: var(--text-light);
         }
 
         /* --- لایه پس زمینه (تکسچر شبکه) --- */
         .bg-grid {
-            position: fixed; /* ثابت در صفحه */
+            position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
             background-image: 
                 linear-gradient(rgba(0, 212, 160, 0.03) 1px, transparent 1px),
@@ -78,7 +77,7 @@
             z-index: -1;
             opacity: 0.15;
             pointer-events: none;
-            overflow: hidden; /* خط از صفحه بیرون نزند */
+            overflow: hidden;
         }
 
         .bg-heartbeat {
@@ -91,14 +90,14 @@
         /* --- بدنه کارت پستال --- */
         .postcard {
             position: relative;
-            z-index: 1; /* بالاتر از پس زمینه ها */
+            z-index: 1;
             background: var(--card-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             width: 100%;
-            max-width: 450px; /* اندازه استاندارد */
+            max-width: 450px;
             border-radius: 24px;
-            padding: 2.5rem 1.5rem; /* پدینگ مناسب موبایل */
+            padding: 2.5rem 1.5rem;
             text-align: center;
             border: 1px solid rgba(0, 212, 160, 0.2);
             box-shadow: 
@@ -155,7 +154,7 @@
         }
 
         .logo {
-            width: 110px; /* سایز مناسب */
+            width: 110px;
             height: auto;
             display: block;
             position: relative;
@@ -409,6 +408,15 @@
 
         <div class="contact-title fade-in-up delay-4">ارتباط با ما</div>
         <div class="contact-grid">
+            
+            <!-- لینک نشریه (اصلاح شده با لینک جدید) -->
+            <a href="https://dehaghan.iau.ir/student/fa/content/162/سفیر-سلامت" target="_blank" class="contact-item fade-in-up delay-4" style="border-right: 3px solid #8A2BE2;">
+                <div class="contact-icon">
+                    <svg viewBox="0 0 24 24" fill="#8A2BE2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                </div>
+                <div class="contact-text">مشاهده سایت نشریه<span>سفیر سلامت</span></div>
+            </a>
+
             <!-- ایمیل -->
             <a href="mailto:safirsalamat.dhq@gmail.com" class="contact-item fade-in-up delay-4" style="border-right: 3px solid #EA4335;">
                 <div class="contact-icon">
