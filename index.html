@@ -4,24 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تبریک روز پرستار | کانون سلامت و پرستاری</title>
-    <!-- فونت فارسی وزیرمتن -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
         :root {
-            --navy-dark: #05101a;     /* سورمه ای بسیار تیره */
-            --navy-light: #0a1c2e;    /* سورمه ای روشن تر */
-            --surgical-green: #00b48a; /* سبز اتاق عمل */
+            --navy-dark: #05101a;
+            --navy-light: #0a1c2e;
+            --surgical-green: #00b48a;
             --surgical-green-glow: rgba(0, 180, 138, 0.4);
-            --text-light: #e2e8f0;    /* رنگ متن */
-            --text-muted: #94a3b8;    /* رنگ متن کم رنگ */
-            --card-bg: rgba(10, 28, 46, 0.7); /* پس زمینه شیشه ای کارت */
+            --text-light: #e2e8f0;
+            --text-muted: #94a3b8;
+            --card-bg: rgba(10, 28, 46, 0.7);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Vazirmatn', sans-serif; }
 
         body {
             background-color: var(--navy-dark);
-            /* گرادیانت عمیق و سنگین */
             background-image: 
                 radial-gradient(circle at 15% 50%, rgba(0, 180, 138, 0.15) 0%, transparent 40%),
                 radial-gradient(circle at 85% 30%, rgba(0, 80, 150, 0.15) 0%, transparent 40%);
@@ -35,7 +33,6 @@
             color: var(--text-light);
         }
 
-        /* المان گرافیکی ضربان قلب در پس زمینه (نئونی) */
         .bg-heartbeat {
             position: fixed;
             top: 50%;
@@ -48,7 +45,6 @@
             filter: drop-shadow(0 0 10px var(--surgical-green));
         }
 
-        /* بدنه کارت پستال (شیشه مات) */
         .postcard {
             position: relative;
             z-index: 1;
@@ -69,11 +65,10 @@
             transform: translateY(30px);
         }
 
-        /* لوگو */
         .logo-container {
             display: inline-block;
             padding: 10px;
-            background: rgba(255, 255, 255, 0.9); /* پس زمینه سفید برای لوگو که دیده شود */
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
             margin-bottom: 1.5rem;
             box-shadow: 0 0 25px rgba(0, 180, 138, 0.2);
@@ -86,7 +81,6 @@
             display: block;
         }
 
-        /* تایپوگرافی */
         h1 {
             color: var(--surgical-green);
             font-size: 1.8rem;
@@ -109,13 +103,13 @@
 
         .message {
             color: var(--text-muted);
-            line-height: 1.9;
+            line-height: 2;
             font-size: 0.95rem;
-            text-align: justify;
+            text-align: center; /* متن شاعرانه بهتر است وسط چین باشد */
             margin-bottom: 1.5rem;
         }
 
-        .message p { margin-bottom: 0.8rem; }
+        .message p { margin-bottom: 1rem; }
 
         .signature {
             font-weight: bold;
@@ -127,14 +121,12 @@
             opacity: 0.9;
         }
 
-        /* خط جداکننده */
         .divider {
             height: 1px;
             background: linear-gradient(to right, transparent, rgba(0, 180, 138, 0.3), transparent);
             margin: 1.5rem 0;
         }
 
-        /* بخش ارتباط با ما */
         .contact-title {
             font-size: 1rem;
             font-weight: 800;
@@ -169,7 +161,7 @@
 
         .contact-item:hover { 
             background: rgba(255, 255, 255, 0.08); 
-            transform: translateX(-5px); /* حرکت ملایم به سمت چپ در راست چین */
+            transform: translateX(-5px);
             border-color: var(--surgical-green);
         }
 
@@ -198,7 +190,6 @@
         }
         .contact-text span { display: block; font-size: 0.7rem; color: var(--text-muted); font-weight: 400; direction: rtl; margin-top: 2px;}
 
-        /* دکمه‌های اشتراک‌گذاری */
         .share-actions {
             display: flex;
             gap: 10px;
@@ -219,7 +210,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            color: var(--navy-dark); /* متن تیره روی دکمه سبز */
+            color: var(--navy-dark);
         }
 
         .btn-primary {
@@ -233,7 +224,6 @@
             filter: brightness(1.1);
         }
 
-        /* انیمیشن‌ها */
         @keyframes slideUp {
             to { opacity: 1; transform: translateY(0); }
         }
@@ -242,7 +232,6 @@
             50% { transform: translateY(-8px); }
         }
 
-        /* پیام کپی */
         #toast {
             visibility: hidden;
             min-width: 200px;
@@ -268,18 +257,17 @@
             h1 { font-size: 1.5rem; }
             .postcard { padding: 2rem 1.2rem; }
             .contact-item { font-size: 0.8rem; }
+            .message { font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- پس زمینه ضربان قلب -->
     <svg class="bg-heartbeat" viewBox="0 0 500 100" preserveAspectRatio="none">
         <path d="M0,50 L150,50 L170,20 L190,80 L210,50 L250,50 L270,10 L290,90 L310,50 L500,50" fill="none" stroke="var(--surgical-green)" stroke-width="2"/>
     </svg>
 
     <div class="postcard">
-        <!-- لوگو کانون با پس زمینه سفید برای دیده شدن در تم تاریک -->
         <div class="logo-container">
             <img src="logo.png" alt="کانون سلامت و پرستاری" class="logo">
         </div>
@@ -287,15 +275,16 @@
         <h1>روز پرستار گرامی باد</h1>
         <div class="subtitle">کانون دانشجویی سلامت و پرستاری</div>
         
+        <!-- متن جدید (گزینه ۱) -->
         <div class="message">
-            <p>اساتید دلسوز و دانشجویان پرتلاش پرستاری،</p>
-            <p>وجود شما نماد امید، آرامش و شفاست. دستانی که مرهم دردند و قلب‌هایی که برای سلامت دیگران می‌تپند. شما فرشتگان نجات در لباس سفید هستید که با دانش و مهربانی، مسیر بهبودی را هموار می‌کنید.</p>
-            <span class="signature">با احترام و سپاس، کانون سلامت و پرستاری</span>
+            <p><strong>اساتید گران‌قدر و دانشجویان پرتلاش،</strong></p>
+            <p>در تقویم، یک روز به نام شماست؛ اما در دل بیماران، هر روز روزِ شماست. شما با دستانی که مرهم دردند و قلبی که بی‌دریغ برای سلامت دیگران می‌تپد، لباس سفید را به جامه افتخار تبدیل کرده‌اید.</p>
+            <p>برای استادانی که چراغ راه علم هستند و دانشجویانی که با عشق قدم در این مسیر گذاشتند، آرزوی سلامتی و موفقیت داریم.</p>
+            <span class="signature">با احترام، کانون سلامت و پرستاری</span>
         </div>
 
         <div class="divider"></div>
 
-        <!-- بخش ارتباط با ما -->
         <div class="contact-title">ارتباط با ما</div>
         <div class="contact-grid">
             <!-- ایمیل -->
@@ -335,7 +324,7 @@
                 <div class="contact-icon">
                     <svg viewBox="0 0 24 24" fill="#0088cc"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
                 </div>
-                <div class="contact-text">Safir S_D<span>آیدی ارتباطی تلگرام</span></div>
+                <div class="contact-text">Safir_S_D<span>آیدی ارتباطی تلگرام</span></div>
             </div>
 
             <!-- اینستاگرام -->
@@ -347,7 +336,6 @@
             </a>
         </div>
 
-        <!-- دکمه اشتراک‌گذاری -->
         <div class="share-actions">
             <button class="btn btn-primary" onclick="sharePage()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
