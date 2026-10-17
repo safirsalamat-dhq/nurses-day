@@ -8,20 +8,23 @@
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
         :root {
-            --primary: #004b87; /* آبی لوگو */
-            --secondary: #00a8b5; /* فیروزه‌ای لوگو */
-            --bg: #f0f4f8;
-            --text: #333;
-            --card-bg: rgba(255, 255, 255, 0.95);
+            --navy-dark: #05101a;     /* سورمه ای بسیار تیره */
+            --navy-light: #0a1c2e;    /* سورمه ای روشن تر */
+            --surgical-green: #00b48a; /* سبز اتاق عمل */
+            --surgical-green-glow: rgba(0, 180, 138, 0.4);
+            --text-light: #e2e8f0;    /* رنگ متن */
+            --text-muted: #94a3b8;    /* رنگ متن کم رنگ */
+            --card-bg: rgba(10, 28, 46, 0.7); /* پس زمینه شیشه ای کارت */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Vazirmatn', sans-serif; }
 
         body {
-            background-color: var(--bg);
+            background-color: var(--navy-dark);
+            /* گرادیانت عمیق و سنگین */
             background-image: 
-                radial-gradient(circle at 15% 50%, rgba(0, 168, 181, 0.08) 0%, transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(0, 75, 135, 0.08) 0%, transparent 25%);
+                radial-gradient(circle at 15% 50%, rgba(0, 180, 138, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 85% 30%, rgba(0, 80, 150, 0.15) 0%, transparent 40%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -29,70 +32,83 @@
             padding: 20px;
             position: relative;
             overflow-x: hidden;
+            color: var(--text-light);
         }
 
-        /* المان گرافیکی ضربان قلب در پس زمینه */
+        /* المان گرافیکی ضربان قلب در پس زمینه (نئونی) */
         .bg-heartbeat {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 120vw;
-            opacity: 0.04;
+            opacity: 0.15;
             z-index: 0;
             pointer-events: none;
+            filter: drop-shadow(0 0 10px var(--surgical-green));
         }
 
-        /* بدنه کارت پستال */
+        /* بدنه کارت پستال (شیشه مات) */
         .postcard {
             position: relative;
             z-index: 1;
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             width: 100%;
             max-width: 480px;
             border-radius: 24px;
             padding: 2.5rem 2rem;
             text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             box-shadow: 
-                0 20px 40px rgba(0,0,0,0.08),
-                0 0 0 1px rgba(0,0,0,0.02);
+                0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                inset 0 0 20px rgba(0, 180, 138, 0.05);
             animation: slideUp 0.8s ease-out forwards;
             opacity: 0;
             transform: translateY(30px);
         }
 
         /* لوگو */
-        .logo {
-            width: 150px;
-            height: auto;
+        .logo-container {
+            display: inline-block;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.9); /* پس زمینه سفید برای لوگو که دیده شود */
+            border-radius: 20px;
             margin-bottom: 1.5rem;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+            box-shadow: 0 0 25px rgba(0, 180, 138, 0.2);
             animation: float 4s ease-in-out infinite;
-            border-radius: 15px; /* اگر لوگو پس‌زمینه دارد، این خط زیبایی آن را حفظ می‌کند */
+        }
+
+        .logo {
+            width: 130px;
+            height: auto;
+            display: block;
         }
 
         /* تایپوگرافی */
         h1 {
-            color: var(--primary);
-            font-size: 1.7rem;
+            color: var(--surgical-green);
+            font-size: 1.8rem;
             font-weight: 900;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px var(--surgical-green-glow);
         }
 
         .subtitle {
-            color: var(--secondary);
+            color: var(--text-light);
             font-size: 1rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
             display: inline-block;
-            padding: 4px 16px;
-            background: rgba(0, 168, 181, 0.1);
+            padding: 6px 18px;
+            background: rgba(0, 180, 138, 0.1);
+            border: 1px solid rgba(0, 180, 138, 0.2);
             border-radius: 20px;
         }
 
         .message {
-            color: #555;
+            color: var(--text-muted);
             line-height: 1.9;
             font-size: 0.95rem;
             text-align: justify;
@@ -103,17 +119,18 @@
 
         .signature {
             font-weight: bold;
-            color: var(--primary);
+            color: var(--surgical-green);
             font-size: 1rem;
             display: block;
             text-align: center;
             margin-top: 1rem;
+            opacity: 0.9;
         }
 
         /* خط جداکننده */
         .divider {
             height: 1px;
-            background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
+            background: linear-gradient(to right, transparent, rgba(0, 180, 138, 0.3), transparent);
             margin: 1.5rem 0;
         }
 
@@ -121,8 +138,9 @@
         .contact-title {
             font-size: 1rem;
             font-weight: 800;
-            color: var(--primary);
+            color: var(--text-light);
             margin-bottom: 1rem;
+            letter-spacing: 1px;
         }
 
         .contact-grid {
@@ -138,33 +156,47 @@
             justify-content: flex-start;
             width: 100%;
             max-width: 320px;
-            padding: 10px 15px;
-            background: white;
-            border-radius: 12px;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 14px;
             text-decoration: none;
-            color: var(--text);
+            color: var(--text-light);
             font-size: 0.85rem;
             font-weight: 600;
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
         }
 
-        .contact-item:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .contact-item:hover { 
+            background: rgba(255, 255, 255, 0.08); 
+            transform: translateX(-5px); /* حرکت ملایم به سمت چپ در راست چین */
+            border-color: var(--surgical-green);
+        }
 
         .contact-icon {
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 5px;
         }
         
         .contact-icon svg { width: 100%; height: 100%; }
 
-        .contact-text { text-align: right; flex: 1; margin-right: 10px; direction: ltr; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
-        .contact-text span { display: block; font-size: 0.7rem; color: #888; font-weight: 400; direction: rtl; }
+        .contact-text { 
+            text-align: right; 
+            flex: 1; 
+            margin-right: 12px; 
+            direction: ltr; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+            white-space: nowrap;
+        }
+        .contact-text span { display: block; font-size: 0.7rem; color: var(--text-muted); font-weight: 400; direction: rtl; margin-top: 2px;}
 
         /* دکمه‌های اشتراک‌گذاری */
         .share-actions {
@@ -175,26 +207,31 @@
 
         .btn {
             flex: 1;
-            padding: 12px;
+            padding: 14px;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             font-family: inherit;
-            font-size: 0.9rem;
-            font-weight: 700;
+            font-size: 0.95rem;
+            font-weight: 800;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
+            color: var(--navy-dark); /* متن تیره روی دکمه سبز */
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            box-shadow: 0 4px 15px rgba(0, 168, 181, 0.3);
+            background: linear-gradient(135deg, var(--surgical-green), #008f6d);
+            color: #ffffff;
+            box-shadow: 0 4px 15px var(--surgical-green-glow);
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 168, 181, 0.4); }
+        .btn-primary:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 25px var(--surgical-green-glow); 
+            filter: brightness(1.1);
+        }
 
         /* انیمیشن‌ها */
         @keyframes slideUp {
@@ -209,8 +246,8 @@
         #toast {
             visibility: hidden;
             min-width: 200px;
-            background-color: #333;
-            color: #fff;
+            background-color: var(--surgical-green);
+            color: var(--navy-dark);
             text-align: center;
             border-radius: 8px;
             padding: 12px;
@@ -219,15 +256,17 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 13px;
+            font-size: 14px;
+            font-weight: bold;
             opacity: 0;
             transition: opacity 0.3s, bottom 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
         #toast.show { visibility: visible; opacity: 1; bottom: 40px; }
 
         @media (max-width: 400px) {
             h1 { font-size: 1.5rem; }
-            .postcard { padding: 2rem 1.5rem; }
+            .postcard { padding: 2rem 1.2rem; }
             .contact-item { font-size: 0.8rem; }
         }
     </style>
@@ -236,12 +275,14 @@
 
     <!-- پس زمینه ضربان قلب -->
     <svg class="bg-heartbeat" viewBox="0 0 500 100" preserveAspectRatio="none">
-        <path d="M0,50 L150,50 L170,20 L190,80 L210,50 L250,50 L270,10 L290,90 L310,50 L500,50" fill="none" stroke="var(--primary)" stroke-width="4"/>
+        <path d="M0,50 L150,50 L170,20 L190,80 L210,50 L250,50 L270,10 L290,90 L310,50 L500,50" fill="none" stroke="var(--surgical-green)" stroke-width="2"/>
     </svg>
 
     <div class="postcard">
-        <!-- لوگو کانون (نام فایل شما logo.png است) -->
-        <img src="logo.png" alt="کانون سلامت و پرستاری" class="logo">
+        <!-- لوگو کانون با پس زمینه سفید برای دیده شدن در تم تاریک -->
+        <div class="logo-container">
+            <img src="logo.png" alt="کانون سلامت و پرستاری" class="logo">
+        </div>
         
         <h1>روز پرستار گرامی باد</h1>
         <div class="subtitle">کانون دانشجویی سلامت و پرستاری</div>
